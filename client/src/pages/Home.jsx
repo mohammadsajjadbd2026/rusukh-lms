@@ -26,6 +26,10 @@ const Home = () => {
         <p className="text-xl text-gray-600">শিখুন, অনুশীলন করুন, এবং নিজেকে প্রমাণ করুন</p>
       </div>
       
+      {courses.length === 0 && (
+        <p className="text-center text-gray-500">এখনো কোনো কোর্স যোগ করা হয়নি।</p>
+      )}
+
       <div className="grid md:grid-cols-3 gap-6">
         {courses.map(course => (
           <div key={course._id} className="bg-white rounded-lg shadow-md overflow-hidden">

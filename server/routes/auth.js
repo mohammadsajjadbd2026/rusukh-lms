@@ -12,7 +12,9 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'Email already exists' });
     }
     
-    const user = new User({ name, email, password });
+    // ADMIN_EMAIL দিয়ে রেজিস্টার করলে সেই ইউজার অ্যাডমিন হবে
+    const isAdmin = process.env.ADMIN_EMAIL && email.toLowerCase() === process.env.ADMIN_EMAIL.toLowerCase();
+    const user = new User({ name, email, password, role: isAdmin ? 'admin' : 'student' });
     await user.save();
     
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
