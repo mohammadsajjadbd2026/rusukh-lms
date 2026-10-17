@@ -13,7 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import axios from 'axios';
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || '/api';
 
 function AppContent() {
   const { token } = useAuth();
